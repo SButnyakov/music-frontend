@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизация</title>
+    <title>Регистрация</title>
 </head>
 <body>
     <a href="http://localhost:80"><h3>Домой</h3></a>
-    <form action="http://localhost:8080/sessions" autocomplete="on" method="POST" name="logForm">
-        <h1>Авторизация</h1>
+    <form action="http://localhost:8080/users" autocomplete="on" method="POST" name="regForm">
+        <h1>Регистрация</h1>
         <label>
             Логин
             <br>
@@ -22,7 +22,7 @@
             <input type="password" name="password">
         </label>
         <br>
-        <input type="submit" value="Войти">
+        <input type="submit" value="Отправить">
     </form>
     <script type="text/javascript" src="../script/functions.js"></script>
 </body>
