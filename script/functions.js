@@ -12,20 +12,22 @@ form.addEventListener("submit", (event) => {
             case 200:
                 window.location.replace("http://localhost:80/");
                 break;
-                case 400:
-                    addErrorMessage("Bad Request");
-                    break;
-                case 401:
-                    addErrorMessage("Unauthorized");
-                    break;
-                case 422:
-                    addErrorMessage("Unprocessable Entity")
-                    break;
-                case 500:
-                    addErrorMessage("Internal Server Error")
-                    break;
-                default:
-                    addErrorMessage("Something went wrong...")
+            case 201:
+                window.location.replace("http://localhost:80/login");
+            case 400:
+                addErrorMessage("Bad Request");
+                break;
+            case 401:
+                addErrorMessage("Unauthorized");
+                break;
+            case 422:
+                addErrorMessage("Unprocessable Entity")
+                break;
+            case 500:
+                addErrorMessage("Internal Server Error")
+                break;
+            default:
+                addErrorMessage("Something went wrong...")
         }
     })
 })
