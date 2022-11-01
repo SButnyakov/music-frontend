@@ -8,20 +8,24 @@ form.addEventListener("submit", (event) => {
     }
     onFormSubmit(data)
     .then(answer => {
-        if (answer[1] === 200) {
-            window.location.replace("http://localhost:80/")
-        } else if (answer[1] === 400) {
-            document.querySelector("h1")
-            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Bad Request</p>")
-        } else if (answer[1] === 401) {
-            document.querySelector("h1")
-            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Unauthorized</p>")
-        } else if (answer[1] === 422) {
-            document.querySelector("h1")
-            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Unprocessable Entity</p>")
-        } else if (answer[1] === 500) {
-            document.querySelector("h1")
-            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Internal Server Error</p>")
+        switch (answer[1]) {
+            case 200:
+                window.location.replace("http://localhost:80/");
+                break;
+                case 400:
+                    addErrorMessage("Bad Request");
+                    break;
+                case 401:
+                    addErrorMessage("Unauthorized");
+                    break;
+                case 422:
+                    addErrorMessage("Unprocessable Entity")
+                    break;
+                case 500:
+                    addErrorMessage("Internal Server Error")
+                    break;
+                default:
+                    addErrorMessage("Something went wrong...")
         }
     })
 })
@@ -41,4 +45,9 @@ async function onFormSubmit(data) {
     let answer = await response.json()
     let code = response.status
     return [answer, code]
+}
+
+function addErrorMessage(errorText) {
+    document.querySelector("h1")
+    .insertAdjacentHTML("afterend", `<p style=\"color: red\">${errorText}</p>`)
 }
