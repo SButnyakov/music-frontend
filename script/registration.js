@@ -4,27 +4,19 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     let data = {
         "login":`${form.login.value}`,
-        "password": `${form.password.value}`
+        "password": `${form.password.value}`,
+        "stage_name": `${form.stage_name.value}`
     }
     onFormSubmit(data)
     .then(answer => {
         switch (answer[1]) {
-            case 200:
-                window.location.replace("http://localhost:80/");
-                break;
             case 201:
                 window.location.replace("http://localhost:80/login");
             case 400:
                 addErrorMessage("Bad Request");
                 break;
-            case 401:
-                addErrorMessage("Unauthorized");
-                break;
             case 422:
                 addErrorMessage("Unprocessable Entity")
-                break;
-            case 500:
-                addErrorMessage("Internal Server Error")
                 break;
             default:
                 addErrorMessage("Something went wrong...")

@@ -19,7 +19,8 @@ const corsOptions = {
 app.get('/', handlers.homeHandler);
 app.get('/login', handlers.loginHandler);
 app.get('/registration', handlers.registrationHandler);
-app.get('/script/functions.js', handlers.fileFunctionsHandler)
+app.get('/script/login.js', handlers.fileLoginHandler)
+app.get('/script/registration.js', handlers.fileRegistrationHandler)
 
 app.use(cors(corsOptions))
 

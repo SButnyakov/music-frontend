@@ -12,13 +12,18 @@ const registrationHandler = (req, res) => {
     res.sendFile(path.join(__dirname, 'views/registration.html'))
 }
 
-const fileFunctionsHandler = (req, res) => {
-    res.sendFile(path.join(__dirname, 'script', 'functions.js'))
+const fileLoginHandler = (req, res) => {
+    res.sendFile(path.join(__dirname, 'script', 'login.js'))
+}
+
+const fileRegistrationHandler = (req, res) => {
+    res.sendFile(path.join(__dirname, 'script', 'registration.js'))
 }
 
 module.exports = {
     homeHandler,
     loginHandler,
     registrationHandler,
-    fileFunctionsHandler
+    fileLoginHandler,
+    fileRegistrationHandler
 }
