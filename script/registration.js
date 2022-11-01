@@ -12,6 +12,7 @@ form.addEventListener("submit", (event) => {
         switch (answer[1]) {
             case 201:
                 window.location.replace("http://localhost:80/login");
+                break;
             case 400:
                 addErrorMessage("Bad Request");
                 break;
