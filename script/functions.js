@@ -10,12 +10,18 @@ form.addEventListener("submit", (event) => {
     .then(answer => {
         if (answer[1] === 200) {
             window.location.replace("http://localhost:80/")
-        } else if (answer[1] === 400 || answer[1] === 401) {
+        } else if (answer[1] === 400) {
             document.querySelector("h1")
-            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Неверно</p>")
+            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Bad Request</p>")
+        } else if (answer[1] === 401) {
+            document.querySelector("h1")
+            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Unauthorized</p>")
+        } else if (answer[1] === 422) {
+            document.querySelector("h1")
+            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Unprocessable Entity</p>")
         } else if (answer[1] === 500) {
             document.querySelector("h1")
-            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Неверно</p>")
+            .insertAdjacentHTML("afterend", "<p style=\"color: red\">Internal Server Error</p>")
         }
     })
 })
