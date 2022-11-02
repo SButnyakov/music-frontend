@@ -21,6 +21,7 @@ app.get('/login', handlers.loginHandler);
 app.get('/registration', handlers.registrationHandler);
 app.get('/script/login.js', handlers.fileLoginHandler)
 app.get('/script/registration.js', handlers.fileRegistrationHandler)
+app.get('/script/utils.js', handlers.fileUtilsHandler)
 
 app.use(cors(corsOptions))
 
