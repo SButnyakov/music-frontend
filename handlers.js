@@ -25,8 +25,12 @@ class Handlers {
         res.sendFile(path.join(__dirname, 'script', 'home.js'))
     }
 
-    static fileProfileHandler = (req, res) => {
+    static scriptProfileHandler = (req, res) => {
         res.sendFile(path.join(__dirname, 'script', 'profile.js'))
+    }
+
+    static styleProfileHandler = (req, res) => {
+        res.sendFile(path.join(__dirname, 'style', 'profile.css'))
     }
 
     static fileLoginHandler = (req, res) => {
