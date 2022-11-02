@@ -36,3 +36,20 @@ async function updateCookieRequest(updateCookieData) {
     })
     return response.status
 }
+
+async function checkCookieRequest(checkCookieData) {
+    let response = await fetch("http://localhost:8080/checkCookie", {
+        method: "POST",
+        body: JSON.stringify(checkCookieData),
+        mode: 'cors',
+        headers: new Headers({
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Access-Control-Allow-Origin': 'http://localhost:8080',
+            'Access-Control-Allow-Credentials': 'true'
+        }),
+        credentials: 'include',
+    })
+    let answer = await response.json()
+    let code = response.status
+    return [answer, code]
+}

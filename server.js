@@ -1,9 +1,9 @@
 /**
  * Required modules
  */
-const express = require('express');
-const cors = require("cors");
-const handlers = require('./handlers');
+import express from 'express'
+import cors from 'cors'
+import handlers from './handlers.js'
 
 /**
  * App Variables
@@ -19,9 +19,10 @@ const corsOptions = {
 app.get('/', handlers.homeHandler);
 app.get('/login', handlers.loginHandler);
 app.get('/registration', handlers.registrationHandler);
-app.get('/script/login.js', handlers.fileLoginHandler)
-app.get('/script/registration.js', handlers.fileRegistrationHandler)
-app.get('/script/utils.js', handlers.fileUtilsHandler)
+app.get('/script/home.js', handlers.fileHomeHandler);
+app.get('/script/login.js', handlers.fileLoginHandler);
+app.get('/script/registration.js', handlers.fileRegistrationHandler);
+app.get('/script/utils.js', handlers.fileUtilsHandler);
 
 app.use(cors(corsOptions))
 
