@@ -11,6 +11,7 @@ form.addEventListener("submit", (event) => {
     onFormSubmit(loginData)
     .then(answer => {
         switch (answer[1]) {
+
             case 200:
                 let updateData = {
                     "login":`${form.login.value}`,
@@ -19,7 +20,7 @@ form.addEventListener("submit", (event) => {
                 updateCookie(updateData)
                 .then(code => {
                     if (code === 200) {
-                        window.location.replace("http://localhost:80/");
+                        window.location.replace(`http://localhost:80/users/${answer[0]}`);
                     } else {
                         window.location.replace("http://localhost:80/login");
                     }
