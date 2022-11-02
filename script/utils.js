@@ -1,3 +1,5 @@
+const baseURL = "http://localhost:8080"
+
 function getAuthCookie() {
     return document.cookie
         .split(";")
@@ -12,7 +14,7 @@ async function onFormSubmit(data) {
         mode: 'cors',
         headers: new Headers({
             'Content-Type': 'application/json; charset=UTF-8',
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
+            'Access-Control-Allow-Origin': `${baseURL}`,
             'Access-Control-Allow-Credentials': 'true'
         }),
         credentials: 'include',
@@ -22,14 +24,14 @@ async function onFormSubmit(data) {
     return [answer, code]
 }
 
-async function updateCookieRequest(updateCookieData) {
-    let response = await fetch("http://localhost:8080/updateCookie", {
+async function updateCookie(updateCookieData) {
+    let response = await fetch(`${baseURL}/updateCookie`, {
         method: "POST",
         body: JSON.stringify(updateCookieData),
         mode: 'cors',
         headers: new Headers({
             'Content-Type': 'application/json; charset=UTF-8',
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
+            'Access-Control-Allow-Origin': `${baseURL}`,
             'Access-Control-Allow-Credentials': 'true'
         }),
         credentials: 'include',
@@ -37,14 +39,14 @@ async function updateCookieRequest(updateCookieData) {
     return response.status
 }
 
-async function checkCookieRequest(checkCookieData) {
-    let response = await fetch("http://localhost:8080/checkCookie", {
+async function checkCookie(checkCookieData) {
+    let response = await fetch(`${baseURL}/checkCookie`, {
         method: "POST",
         body: JSON.stringify(checkCookieData),
         mode: 'cors',
         headers: new Headers({
             'Content-Type': 'application/json; charset=UTF-8',
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
+            'Access-Control-Allow-Origin': `${baseURL}`,
             'Access-Control-Allow-Credentials': 'true'
         }),
         credentials: 'include',
@@ -52,4 +54,27 @@ async function checkCookieRequest(checkCookieData) {
     let answer = await response.json()
     let code = response.status
     return [answer, code]
+}
+
+async function getUserById(id) {
+    let response = await fetch(`${baseURL}/users/${id}`, {
+        method: "GET",
+        mode: 'cors',
+        headers: new Headers({
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Access-Control-Allow-Origin': `${baseURL}`,
+            'Access-Control-Allow-Credentials': 'true'
+        }),
+        credentials: 'include',
+    })
+    
+    let answer
+    let code = response.status
+
+    if (code === 200) {
+        answer = await response.json()
+        return [answer, code]
+    }
+
+    return [null, code]
 }

@@ -16,7 +16,7 @@ form.addEventListener("submit", (event) => {
                     "login":`${form.login.value}`,
                     "auth_cookie": `${getAuthCookie()}`,
                 }
-                updateCookieRequest(updateData)
+                updateCookie(updateData)
                 .then(code => {
                     if (code === 200) {
                         window.location.replace("http://localhost:80/");

@@ -2,7 +2,7 @@ const checkCookieData = {
     "auth_cookie": `${getAuthCookie()}`
 }
 
-checkCookieRequest(checkCookieData)
+checkCookie(checkCookieData)
 .then(answer => {
     switch(answer[1]) {
         case 200:

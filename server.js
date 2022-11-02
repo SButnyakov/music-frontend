@@ -19,7 +19,9 @@ const corsOptions = {
 app.get('/', handlers.homeHandler);
 app.get('/login', handlers.loginHandler);
 app.get('/registration', handlers.registrationHandler);
+app.get('/users/:id', handlers.profileHandler);
 app.get('/script/home.js', handlers.fileHomeHandler);
+app.get('/script/profile.js', handlers.fileProfileHandler);
 app.get('/script/login.js', handlers.fileLoginHandler);
 app.get('/script/registration.js', handlers.fileRegistrationHandler);
 app.get('/script/utils.js', handlers.fileUtilsHandler);
